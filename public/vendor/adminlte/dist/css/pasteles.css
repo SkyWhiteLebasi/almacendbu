@@ -1,0 +1,62 @@
+.btn {
+  color: #fff;
+}
+
+.btn-pastel1 {
+  background-color: #01729a;
+}
+
+.btn-pastel1:hover {
+  background-color: #11787d;
+  color: #fff;
+}
+
+.btn-pastel2 {
+  background-color: #a5ad03;
+}
+
+.btn-pastel2:hover {
+  background-color: #667a01;
+  color: #fff;
+}
+
+.btn-pastel3 {
+  background-color: #cc0033;
+}
+
+.btn-pastel3:hover {
+  background-color: #ff4522;
+  color: #fff;
+}
+
+.btn-pastel4 {
+  background-color: #ff7751;
+}
+
+.btn-pastel4:hover {
+  background-color: #f33829;
+  color: #fff;
+}
+
+.btn-pastel5 {
+  background-color: #723d47;
+}
+
+.btn-pastel5:hover {
+  background-color: #513d62;
+  color: #fff;
+}
+
+.btn-pastel6 {
+  background-color: #da0a08;
+}
+
+.btn-pastel6:hover {
+  background-color: #840000;
+  color: #fff;
+}
+
+.card .card-pastel5 {
+  background-color: #667a01;
+  color: #fff;
+}
