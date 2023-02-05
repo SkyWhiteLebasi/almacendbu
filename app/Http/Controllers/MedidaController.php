@@ -16,7 +16,8 @@ class MedidaController extends Controller
     public function index()
     {
         $datos['medidas']=Medida::all()->sortDesc();
-        return view('medida.index',$datos );
+        $num=1;
+        return view('medida.index',$datos, compact('num') );
     }
 
     public function create()

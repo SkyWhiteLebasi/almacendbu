@@ -42,7 +42,7 @@
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="{{ url('pedido/') }}" class="small-box-footer">Más información <i
+                        <a href="{{ url('kardex/entradashoy') }}" class="small-box-footer">Más información <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Más información <i
+                        <a href="{{ url('kardex/salidashoy') }}" class="small-box-footer">Más información <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Más información <i
+                        <a href="{{ url('kardex/pocostock') }}" class="small-box-footer">Más información <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>

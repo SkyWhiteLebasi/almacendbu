@@ -7,7 +7,7 @@
 
 @section('content')
 
-    <link rel="stylesheet" href="../css/pasteles.css">
+    <link rel="stylesheet" href="../../css/pasteles.css">
     @if (count($errors) > 0)
         <div class="alert alert-danger" role="alert">
             <ul>

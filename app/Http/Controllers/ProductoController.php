@@ -8,10 +8,7 @@ use App\Models\Categoria;
 use App\Models\Medida;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\App;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Maatwebsite\Excel\Facades\Excel;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductoController extends Controller
 {
@@ -45,15 +42,6 @@ class ProductoController extends Controller
         return view('producto.index',$datos, compact('num') );
     }
 
-    public function pdf()
-    {
-  
-        $productos=Producto::all();
-        $num=1;
-        $pdf = Pdf::loadView('producto.pdf', ['productos'=>$productos], compact('num'));
-
-        return $pdf->stream();
-    }
     
     public function create()
     {

@@ -3,6 +3,11 @@
 @section('title', 'Lista de Semana')
 
 @section('content_header')
+<div class="row justify-content-md-center">
+    <div class="col-8">
+        <h4 style="color: #01729a"><b> Lista de Semanas</b></h4>
+    </div>
+</div>
     <div class="row justify-content-md-center">
         <div class="col-8">
             @can('semana.create')
@@ -21,7 +26,7 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
-
+                    <div class="table-responsive">
                     <table class="table">
                         <thead class="myhead">
                             <tr>
@@ -34,13 +39,13 @@
                             @foreach ($semanas as $semana)
                                 <tr>
 
-                                    <td> {{ $semana->id }} </td>
+                                    <td> {{ $num++ }} </td>
                                     <td> {{ $semana->nombre_semana }}</td>
                                     <td>
                                         {{-- @can('salida.destroy') --}}
 
-                                        <form action="{{ url('/semana/' . $semana->id) }}" id="form-eliminar"
-                                            class="d-inline" method="POST">
+                                        <form action="{{ url('/semana/' . $semana->id) }}" 
+                                            class="d-inline form-eliminar" method="POST">
                                             @csrf
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-pastel4"><i class="fas fa-trash-alt"></i>
@@ -54,6 +59,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,7 +91,7 @@
 
 
     <script type="text/javascript">
-        $('#form-eliminar').submit(function(e) {
+        $('.form-eliminar').submit(function(e) {
 
             e.preventDefault();
 
@@ -100,7 +106,7 @@
                 confirmButtonText: 'Si, eliminarlo!',
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
-                if (result.value) {
+                if (result.isConfirmed) {
 
                     this.submit();
                 }

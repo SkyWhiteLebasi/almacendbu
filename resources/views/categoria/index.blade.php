@@ -3,6 +3,11 @@
 @section('title', 'Categoria')
 
 @section('content_header')
+<div class="row justify-content-md-center">
+    <div class="col-8">
+        <h4 style="color: #01729a"><b> Lista de Categorias</b></h4>
+    </div>
+</div>
     @can('categoria.create')
         <div class="row justify-content-md-center">
             <div class="col-8">
@@ -19,7 +24,7 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
-
+                    <div class="table-responsive">
                     <table class="table">
                         <thead class="myhead">
                             <tr>
@@ -36,8 +41,8 @@
                                     <td> {{ $categoria->nombre_categoria }}</td>
                                     <td>
                                         @can('categoria.destroy')
-                                            <form action="{{ url('/categoria/' . $categoria->id) }}" id="form-eliminar"
-                                                class="d-inline" method="POST">
+                                            <form action="{{ url('/categoria/' . $categoria->id) }}"
+                                                class="d-inline form-eliminar" method="POST">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" class="btn btn-pastel4"><i class="fas fa-trash-alt"></i>
@@ -51,6 +56,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
 
@@ -85,7 +91,7 @@
 
 
     <script type="text/javascript">
-        $('#form-eliminar').submit(function(e) {
+        $('.form-eliminar').submit(function(e) {
 
             e.preventDefault();
 
@@ -100,7 +106,7 @@
                 confirmButtonText: 'Si, eliminarlo!',
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
-                if (result.value) {
+                if (result.isConfirmed) {
 
                     this.submit();
                 }

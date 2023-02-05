@@ -1,3 +1,5 @@
+@extends('layouts.plugins')
+
 @extends('adminlte::page')
 
 @section('title', 'Kardex')
@@ -6,15 +8,17 @@
 @stop
 
 @section('content')
+<br>
     <link rel="stylesheet" href="css/pasteles.css">
     <div class="row justify-content-md-center">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table" id="example">
+                    <div class="table-responsive">
+                    <table class="table" id="kardex">
                         <thead class="myhead">
                             <tr>
-                                <th>Id</th>
+                                <th>Item</th>
                                 <th>Numero de orden</th>
                                 <th>Nombre del producto</th>
                                 <th>Inventario inicial</th>
@@ -38,6 +42,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
 
@@ -46,6 +51,49 @@
     </div>
 @stop
 @section('js')
+
+<script>
+    $(document).ready(function() {
+
+
+        var table = $('#kardex').DataTable({
+            responsive: true,
+            autoWidth: false,
+            "language": {
+                "url": "{{ asset('idioma/es_dtable.json') }}"
+            },
+            pagingType: 'numbers',
+            dom: 'Bfrtip',
+            columnDefs: [{
+                targets: 0,
+                searchable: true,
+                visible: false
+            }],
+            buttons: [
+
+                {
+                    extend: 'excelHtml5',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6],
+                    }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6]
+                    }
+                },
+
+            ]
+        });
+
+        table.buttons().container()
+            .appendTo('#kardex_wrapper .col-md-6:eq(0)');
+
+
+    });
+</script>
+
 <script >
     $(document).ready(function() {
   var table = $('#example').DataTable( {

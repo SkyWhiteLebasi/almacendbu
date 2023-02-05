@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Almacen </title>
+  <title>DBU | Almacen </title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{asset('backend/plugins/fontawesome-free/css/all.min.css')}}">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{{asset('backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.min.css')}}">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="{{asset('forlogin/fontawesome-free/css/all.min.css')}}">
+   <!-- Google Font: Source Sans Pro -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+   <link rel="stylesheet" href="{{asset('forlogin/icheck-bootstrap.min.css')}}">
+
+   <link rel="stylesheet" href="{{asset('forlogin/adminlte.min.css')}}">
+
 </head>
 <body class="hold-transition login-page logini">
     <style>
@@ -22,7 +23,7 @@
       }
       .logini {
           padding: 80px 0px;
-          background: url(backend/dist/img/universidad.jpg);
+          background: url(img/universidad.jpg);
           background-position: center;
           background-size: 100%;
           background-repeat: no-repeat;
@@ -82,19 +83,11 @@
     }
     </script>
   <div class="login-box" >
-    
-    <!-- /.login-logo
-    <div class="form-sub-main">
-      <div class="_main_head_as">
-        <a href="#"> -->
-         <!--   <img onmouseover="bigImg(this)" onmouseout="normalImg(this)" src="backend/dist/img/logodbu.png">
-       </a>
-      </div>
-    </div>--> 
+
     <div class="card card-outline card-danger">
       <div class="card-header text-center yara">
         <a href="#">
-          <img src="backend/dist/img/logouna.png"  class="opacity">
+          <img src="img/logouna.png"  class="opacity">
         </a>
       </div>
       <div class="card-body">
@@ -124,29 +117,19 @@
           <div class="col-12">
             <button type="submit" class="btn btn-danger btn-block">Ingresar</button>
           </div>
-          
-          <!-- /.col -->
+
         </div>
       </form>
       
-      {{-- <p class="mb-0">
-        <a href="{{route('register')}}" class="text-center">Registrar un nuevo usuario</a>
-      </p>
-       --}}
-      <!-- /.social-auth-links -->
-
     </div>
-    <!-- /.card-body -->
   </div>
   <!-- /.card -->
 </div>
-<!-- /.login-box -->
 
-<!-- jQuery -->
-<script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('forlogin/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
-<script src="{{asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('forlogin/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('backend/dist/js/adminlte.min.js')}}"></script>
+<script src="{{asset('forlogin/adminlte.min.js')}}"></script>
 </body>
 </html>

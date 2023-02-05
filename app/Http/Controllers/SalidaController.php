@@ -8,7 +8,6 @@ use App\Models\Salida;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SalidaController extends Controller
@@ -41,29 +40,10 @@ class SalidaController extends Controller
         $num=1;
         return view('salida.index', $datos,compact('num'));
     }
-    public function pdf()
-    {
-        $salidas= DB::select('SELECT salidas.id, productos.nombre_pr, salidas.cant_salida_val, salidas.fecha_salida, salidas.contador_salida, salidas.obs_salida from salidas
-        INNER JOIN productos ON salidas.producto_id =productos.id
-         WHERE salidas.contador_salida=1');
-        $pdf = Pdf::loadView('salida.pdf', ['salidas'=>$salidas]);
-        return $pdf->stream();
-    }
-    public function pdf_nutricion()
-    {
-        $nutricion= DB::select('SELECT salidas.id, productos.nombre_pr, salidas.cant_salida, salidas.fecha_salida, salidas.contador_salida, salidas.obs_salida from salidas
-        INNER JOIN productos ON salidas.producto_id =productos.id
-         WHERE salidas.contador_salida=0');
-
-
-        $pdf = Pdf::loadView('salida.pdf_nutricion', ['nutricion'=>$nutricion]);
-        return $pdf->stream();
-    }
+   
 
     public function nutri()
     {
-        
-
         $datos['nutricion']=Salida::query()
         ->with('producto')
         ->whereraw('contador_salida=0')
@@ -117,7 +97,7 @@ class SalidaController extends Controller
             'cant_salida_val' =>'required|integer',
             'obs_salida' =>'nullable|string|max:100000',
             'fecha_salida' =>'required',
-            'contador_salida ' =>'nullable|string|max:100000',
+            'contador_salida' =>'nullable|string|max:100000',
         ];
 
         $mensaje=[
@@ -129,11 +109,11 @@ class SalidaController extends Controller
         $datosSalida = request()->except('_token'); //trae los datos excepto el token
         $validadorSalida = request('contador_salida');
         $sal=request('cant_salida_val');
-        $sales=request('cant_salida');
+        $sales=request('cant_salida_val');
         $stockeado=request('producto_id');
         $product=Producto::FindOrFail($stockeado);
         if($product->stock>=$sales){
-            $datosSalida['cant_salida_val']=$request->cant_salida;
+            $validadorSalida=1;
         }
         // $stockeado=request('producto_id');
         // $product=Producto::FindOrFail($stockeado);
@@ -142,16 +122,17 @@ class SalidaController extends Controller
         if($validadorSalida==1 && $resta>=0){
             $product->stock =$resta;
             $product->save();  
-             
-        }
-        Salida::insert($datosSalida); 
-        
-        $sed = DB::statement('SELECT producto_id FROM salidas;');
-        if($validadorSalida==1){
-            return redirect('salida')->with('guardar', 'ok');
+            Salida::insert($datosSalida);   
+            return redirect('salida')->with('guardar', 'ok');   
         }else{
-            return redirect('salida/nutricion')->with('guardar', 'ok');
+            // echo 'La salida no puede ser mayor al stock';
+            return redirect('salida')->with('guardar', 'notok');
         }
+        
+    
+        
+        
+       
         
     }
 
@@ -239,7 +220,7 @@ class SalidaController extends Controller
         $me->save();  
         Salida::destroy($id);
         // dd($me);
-        return redirect('salida/nutricion')->with('eliminar', 'ok');
+        return redirect('salida')->with('eliminar', 'ok');
     }
 
 }

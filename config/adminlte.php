@@ -436,6 +436,7 @@ return [
             'route'         => 'semana.index',
             'icon'        => 'fas fa-calendar-week',
             'can' => 'semana.index',
+            
 
         ],
 
@@ -443,6 +444,8 @@ return [
             'text'       => 'Salidas Diarias',
             'icon_color' => 'fas fa-sun',
             'route'        => 'salidanutricion.index',
+            'can' => 'salidanutricion.index',
+            
         ]
 
     ],

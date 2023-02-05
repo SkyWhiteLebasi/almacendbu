@@ -6,10 +6,9 @@ use App\Imports\PedidosImport;
 use App\Models\Pedido;
 use App\Models\Medida;
 use App\Models\Producto;
-use App\Models\User;
+
 use App\Models\Semana;
-use Illuminate\Support\Facades\DB;
-use Barryvdh\DomPDF\Facade\Pdf;
+
 use Maatwebsite\Excel\Facades\Excel;
 
 use Illuminate\Http\Request;
@@ -35,17 +34,6 @@ class PedidoController extends Controller
         return view('pedido.index',$datos, compact('med', 'produc','semana', 'num') );
     }
 
-    public function pdf()
-    {
-  
-        $pedidos=Pedido::all();
-        
-        
-        $pdf = Pdf::loadView('pedido.pdf', ['pedidos'=>$pedidos]);
-        
-
-        return $pdf->stream();
-    }
 
     public function create()
     {

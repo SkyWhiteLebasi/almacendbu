@@ -37,10 +37,10 @@
 
 
                         <div class="form-group">
-                            <label for="cant_salida"> Cantidad de salida</label>
-                            <input type="integer" class="form-control" name="cant_salida"
-                                value="{{ isset($salida->cant_salida) ? $salida->cant_salida : old('cant_salida') }}"
-                                placeholder="Escriba la cantidad de salida" id="cant_salida">
+                            <label for="cant_salida_val"> Cantidad de salida</label>
+                            <input type="integer" class="form-control" name="cant_salida_val"
+                                value="{{ isset($salida->cant_salida_val) ? $salida->cant_salida_val : old('cant_salida_val') }}"
+                                placeholder="Escriba la cantidad de salida" id="cant_salida_val">
                         </div>
 
                         <div class="form-group">
@@ -56,12 +56,7 @@
                                 value="{{ isset($salida->fecha_salida) ? $salida->fecha_salida : old('fecha_salida') }}"
                                 placeholder="fecha_salida" id="fecha_salida">
                         </div>
-                        {{-- <div class="form-group">
-                                    <label for="contador_salida"> contador de salida</label>
-                                    <input type="integer" class="form-control" name="contador_salida"
-                                        value="{{ isset($salida->contador_salida) ? $salida->contador_salida : old('contador_salida') }}"
-                                        placeholder="contador_salida" id="contador_salida">
-                                </div> --}}
+                        
                         <div class="form-group">
                             <label for="contador_salida"> Validación de Salida</label>
                             <select class="form-control" name='contador_salida' id="contador_salida">

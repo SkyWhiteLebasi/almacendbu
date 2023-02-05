@@ -18,7 +18,8 @@ class SemanaController extends Controller
     {
         //
         $datos['semanas']=Semana::all()->sortDesc();
-        return view('semana.index',$datos );
+        $num=1;
+        return view('semana.index',$datos, compact('num') );
     }
 
     /**

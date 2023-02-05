@@ -7,7 +7,6 @@ use App\Models\Entrada;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Maatwebsite\Excel\Facades\Excel;
 
 class EntradaController extends Controller
@@ -30,12 +29,6 @@ class EntradaController extends Controller
         return view('entrada.index',$datos, compact('num') );
     }
 
-    public function pdf()
-    {
-        $entradas=Entrada::all();
-        $pdf = Pdf::loadView('entrada.pdf', ['entradas'=>$entradas]);
-        return $pdf->stream();
-    }
 
     public function create()
     {

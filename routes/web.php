@@ -35,13 +35,12 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->middlewa
 
 Route::resource('user', UserController::class)->middleware('auth')->names('user');
 
-Route::get('/producto/pdf',[ProductoController::class, 'pdf'])->name('producto.pdf');
 
 Route::get('/producto/import-excel',[ProductoController::class, 'create2'])->name('producto.import-excel');
 
 Route::resource('producto', ProductoController::class)->middleware('auth')->names('producto');
 
-Route::get('/pedido/pdf',[PedidoController::class, 'pdf'])->name('pedido.pdf');
+
 
 Route::get('/pedido/import-excel',[PedidoController::class, 'create2'])->name('pedido.import-excel');
 
@@ -51,15 +50,12 @@ Route::resource('semana', SemanaController::class)->middleware('auth')->names('s
 
 Route::get('/entrada/import-excel',[EntradaController::class, 'importentrada'])->name('entrada.import-excel');
 
-Route::get('/entrada/pdf',[EntradaController::class, 'pdf'])->name('entrada.pdf');
 Route::get('/entrada/show',[EntradaController::class, 'show'])->name('entrada.show');
 Route::resource('entrada', EntradaController::class)->middleware('auth')->except('show')->names('entrada');
 
 Route::get('/salida/import-excel-alm',[SalidaController::class, 'importalmacen'])->name('salida.import-excel-alm');
 Route::get('/salida/{id}/editdos',[SalidaController::class, 'editdos'])->name('salida.editdos');
 // Route::get('/salida/import-excel',[SalidaController::class, 'create3'])->name('salida.import-excel');
-Route::get('/salida/pdf',[SalidaController::class, 'pdf'])->name('salida.pdf');
-Route::get('/salida/pdf_nutricion',[SalidaController::class, 'pdf_nutricion'])->name('salida.pdf_nutricion');
 Route::get('/salida/nutricion',[SalidaController::class, 'nutri'])->name('salida.nutricion');
 // Route::get('/salida/salidadiaria',[SalidaController::class, 'create2'])->name('salida.salidadiaria');
 Route::get('/salida/show',[SalidaController::class, 'show'])->name('salida.show');
@@ -72,5 +68,9 @@ Route::resource('salidanutricion', SalidaNutricionController::class)->middleware
 Route::resource('medida', MedidaController::class)->middleware('auth')->names('medida');
 
 Route::resource('categoria', CategoriaController::class)->middleware('auth')->names('categoria');
+
+Route::get('/kardex/entradashoy', [App\Http\Controllers\KardexController::class, 'entradashoy'])->name('kardex.entradashoy');
+Route::get('/kardex/salidashoy', [App\Http\Controllers\KardexController::class, 'salidashoy'])->name('kardex.salidashoy');
+Route::get('/kardex/pocostock', [App\Http\Controllers\KardexController::class, 'pocostock'])->name('kardex.pocostock');
 
 Route::get('/kardex', [App\Http\Controllers\KardexController::class, 'index'])->name('kardex.index');

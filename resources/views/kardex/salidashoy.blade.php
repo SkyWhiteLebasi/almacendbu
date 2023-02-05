@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Mostrar Entrada')
+@section('title', 'Salidas de hoy')
 
 @section('content_header')
 @stop
@@ -18,17 +18,19 @@
                                 <tr>
                                     <th>Item</th>
                                     <th>Número de orden</th>
-                                    <th>Producto</th>
-                                    <th>Número de Ingresos</th>
+                                    <th>Nombre del Producto</th>
+                                    <th>Cantidad de salida</th>
+                                    <th>Observación</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($consulta as $entrada)
+                                @foreach ($salidashoy as $salhoy)
                                     <tr>
                                         <td> {{ $num++ }} </td>
-                                        <td> {{ $entrada->producto->num_orden }} </td>
-                                        <td> {{ $entrada->producto->nombre_pr }} </td>
-                                        <td> {{ $entrada->mira }} </td>
+                                        <td> {{ $salhoy->num_orden }} </td>
+                                        <td> {{ $salhoy->nombre_pr }} </td>
+                                        <td> {{ $salhoy->cant_salida_val }} </td>
+                                        <td> {{ $salhoy->obs_salida }} </td>
                                     </tr>
                                 @endforeach
                             </tbody>

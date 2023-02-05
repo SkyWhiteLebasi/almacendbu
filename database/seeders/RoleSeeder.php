@@ -27,7 +27,7 @@ class RoleSeeder extends Seeder
         $permission = Permission::create(['name' => 'user.destroy'])->assignRole($role1);
         
 
-        $permission = Permission::create(['name' => 'producto.pdf'])->syncRoles([$role1, $role2,$role3]);
+        // $permission = Permission::create(['name' => 'producto.pdf'])->syncRoles([$role1, $role2,$role3]);
         $permission = Permission::create(['name' => 'producto.import-excel'])->syncRoles([$role1, $role2]);
         $permission = Permission::create(['name' => 'producto.index'])->syncRoles([$role1, $role2, $role3]);
         $permission = Permission::create(['name' => 'producto.create'])->syncRoles([$role1, $role2]);
@@ -36,10 +36,10 @@ class RoleSeeder extends Seeder
         $permission = Permission::create(['name' => 'producto.update'])->syncRoles([$role1, $role2]);
         $permission = Permission::create(['name' => 'producto.destroy'])->syncRoles([$role1, $role2]);
 
-        $permission = Permission::create(['name' => 'pedido.index'])->syncRoles([$role1, $role3]);
+        $permission = Permission::create(['name' => 'pedido.index'])->syncRoles([$role1, $role2, $role3]);
         $permission = Permission::create(['name' => 'pedido.create'])->syncRoles([$role1, $role3]);
         $permission = Permission::create(['name' => 'pedido.import-excel'])->syncRoles([$role1, $role3]);
-        $permission = Permission::create(['name' => 'pedido.pdf'])->syncRoles([$role1, $role3]);
+        // $permission = Permission::create(['name' => 'pedido.pdf'])->syncRoles([$role1, $role3]);
         $permission = Permission::create(['name' => 'pedido.edit'])->syncRoles([$role1, $role3]);
         $permission = Permission::create(['name' => 'pedido.destroy'])->syncRoles([$role1, $role3]);
 
@@ -48,7 +48,6 @@ class RoleSeeder extends Seeder
         $permission = Permission::create(['name' => 'semana.destroy'])->syncRoles([$role1, $role3]);
 
         $permission = Permission::create(['name' => 'entrada.import-excel'])->syncRoles([$role1, $role2]);
-        $permission = Permission::create(['name' => 'entrada.pdf'])->syncRoles([$role1, $role2, $role3]);
         $permission = Permission::create(['name' => 'entrada.index'])->syncRoles([$role1, $role2, $role3]);;
         $permission = Permission::create(['name' => 'entrada.create'])->syncRoles([$role1, $role2]);
         $permission = Permission::create(['name' => 'entrada.edit'])->syncRoles([$role1, $role2]);
@@ -57,7 +56,7 @@ class RoleSeeder extends Seeder
 
         $permission = Permission::create(['name' => 'salida.import-excel-alm'])->syncRoles([$role1, $role2]);
         // $permission = Permission::create(['name' => 'salida.import-excel'])->syncRoles([$role1, $role3]);
-        $permission = Permission::create(['name' => 'salida.pdf'])->syncRoles([$role1, $role2, $role3]);
+       
         // $permission = Permission::create(['name' => 'salida.pdf_nutricion'])->syncRoles([$role1, $role3]);
         $permission = Permission::create(['name' => 'salida.nutricion'])->syncRoles([$role1,$role2]);
         // $permission = Permission::create(['name' => 'salida.salidadiaria'])->syncRoles([$role1, $role3]);
@@ -85,7 +84,10 @@ class RoleSeeder extends Seeder
         $permission = Permission::create(['name' => 'categoria.create'])->syncRoles([$role1, $role2]);
         $permission = Permission::create(['name' => 'categoria.destroy'])->syncRoles([$role1, $role2]);
         
-        $permission = Permission::create(['name' => 'kardex'])->syncRoles([$role1, $role2, $role3]);   
+        $permission = Permission::create(['name' => 'kardex'])->syncRoles([$role1, $role2, $role3]);  
+        $permission = Permission::create(['name' => 'kardex.entradashoy'])->syncRoles([$role1, $role2, $role3]);
+        $permission = Permission::create(['name' => 'kardex.salidashoy'])->syncRoles([$role1, $role2, $role3]);
+        $permission = Permission::create(['name' => 'kardex.pocostock'])->syncRoles([$role1, $role2, $role3]); 
     
     }
 }

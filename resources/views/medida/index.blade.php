@@ -3,6 +3,12 @@
 @section('title', 'Medida')
 
 @section('content_header')
+
+<div class="row justify-content-md-center">
+    <div class="col-8">
+        <h4 style="color: #01729a"><b> Lista de Medidas</b></h4>
+    </div>
+</div>
     <div class="row justify-content-md-center">
         <div class="col-8">
             @can('medida.create')
@@ -30,6 +36,7 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
+                    <div class="table-responsive">
                     <table class="table" id="example">
                         <thead class="myhead">
                             <tr>
@@ -42,26 +49,26 @@
                             @foreach ($medidas as $medida)
                                 <tr>
 
-                                    <td> {{ $medida->id }} </td>
+                                    <td> {{ $num++ }} </td>
                                     <td> {{ $medida->nombre_medida }}</td>
                                     <td>
-                                        {{-- <a href="{{ url('/semana/'.$semana->id.'/edit'),  }}" class="btn btn-warning">editar</a>
-                 | --}}
                                         @can('medida.destroy')
                                             <form action="{{ url('/medida/' . $medida->id) }}" id="form-eliminar"
-                                                class="d-inline" method="POST">
+                                                class="d-inline form-eliminar" method="POST">
                                                 @csrf
                                                 {{ method_field('DELETE') }}
                                                 <button type="submit" class="btn btn-pastel4"><i class="fas fa-trash-alt"></i>
                                                     Borrar</button>
                                             </form>
                                         @endcan
+
                                     </td>
 
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
                 </div>
             </div>
 
@@ -95,7 +102,7 @@
 
 
     <script type="text/javascript">
-        $('#form-eliminar').submit(function(e) {
+        $('.form-eliminar').submit(function(e) {
 
             e.preventDefault();
 
@@ -110,7 +117,7 @@
                 confirmButtonText: 'Si, eliminarlo!',
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
-                if (result.value) {
+                if (result.isConfirmed) {
 
                     this.submit();
                 }
